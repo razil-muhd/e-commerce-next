@@ -11,7 +11,7 @@ const Header = () => {
     { name: 'New', path: '/new' },
   ];
   return (
-    <div className='fixed z-50 inset-x-0'>
+    <div className='fixed z-[80] inset-x-0'>
       <div className="bg-blue-400 w-full  flex justify-between px-20  py-7 shadow-xl  border-b-2">
         <h1 className=' text-white font-bold text-[25px] '>E-COMMERCE</h1>
         <div className='flex  gap-12  text-white  text-lg font-bold

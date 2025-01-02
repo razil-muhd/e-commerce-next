@@ -65,8 +65,8 @@ const Slide = () => {
           <div className={cn('relative h-[30rem] w-full flex items-center',{'justify-center':slide==1})}>
                <Image className='object-cover' src={gallery.at(slide)!.image} alt='slide' fill />
                <div className='text-black absolute text-4xl  flex justify-between w-full px-3  z-50'>
-                    <button onClick={prev}>{"<"}</button>
-                    <button onClick={next}>{">"}</button>
+                    <button  onClick={prev}>{"<"}</button>
+                    <button  onClick={next}>{">"}</button>
                </div>
           <div className='text-black relative  px-20 '>
                     <h2 className='text-2xl font-semibold transition-transform duration-300'>{gallery.at(0)!.text.heading}</h2>

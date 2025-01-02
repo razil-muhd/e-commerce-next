@@ -2,6 +2,7 @@
 import React from 'react'
 import Slide from './_components/Slide'
 import Category from './_components/Category';
+import Featurepdct from './_components/Featurepdct';
 
 
 const page = () => {
@@ -9,6 +10,7 @@ const page = () => {
     <div className='pt-[5.944rem]'>
       <Slide />
       <Category/>
+      <Featurepdct/>
 
 
     </div>
