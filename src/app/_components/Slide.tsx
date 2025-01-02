@@ -31,7 +31,7 @@ const gallery = [
           text: {
                heading: "HAPPY 2025",
                subheading: "ONLY FOR YOU",
-               description: "Lets begin this year with new trends.."
+               description: "Lets begin this yearwith new trends.."
 
 }
      }

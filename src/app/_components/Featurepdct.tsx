@@ -89,9 +89,9 @@ const Featurepdct = () => {
         </h2>
       </div>
       <div className="grid grid-cols-4 grid-rows-2 py-5">
-        {products.map((item, i) => (
+        {products.map((item, i) => 
           <Featured key={i} desc={item.text.description} heading={item.text.heading} image={item.image} price={item.text.price}/>
-        ))}
+        )}
       </div>
     </div>
   );
