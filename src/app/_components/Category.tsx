@@ -12,7 +12,7 @@ const Category = () => {
           These are our Categories
         </h2>
       </div>
-      <div className="grid grid-cols-3 grid-rows-2 gap-4 py-3 px-12">
+      <div className="grid grid-cols-3 grid-rows-2 gap-4 py-10 px-12">
         <div className="col-span-1 row-span-2">
           <div className="relative w-full h-[450px] overflow-hidden">
             <Image

@@ -22,48 +22,48 @@ const products = [
   {
     image: img2,
     text: {
-      heading: "Sandal",
-      description: "Elegant leather loafer sandal for.",
+      heading: "Slippers",
+      description: "A slipper is a soft indoor shoe.",
       price: 799,
     },
   },
   {
     image: img3,
     text: {
-      heading: "Shirt",
-      description: "Elegant leather loafer sandal.",
-      price: 699,
+      heading: "Casual Shirts",
+      description: "A casual shirt is a relaxed  shirt.",
+      price: 999,
     },
   },
   {
     image: img4,
     text: {
-      heading: "Watch",
-      description: "Elegant leather loafer sandal for.",
-      price: 799,
+      heading: "Watches",
+      description: "Watches are wrist-worn timepieces.",
+      price: 1299,
     },
   },
   {
     image: img5,
     text: {
       heading: "Trouser",
-      description: "Elegant leather loafer sandal.",
-      price: 699,
+      description: "Trousers are pants covering the lower body.",
+      price: 299,
     },
   },
   {
     image: img6,
     text: {
       heading: "Cap",
-      description: "Elegant leather loafer sandal.",
-      price: 599,
+      description: "A cap is a snug-fitting headwear.",
+      price: 159,
     },
   },
   {
     image: img7,
     text: {
       heading: "Hoodie",
-      description: "Elegant leather loafer sandal for.",
+      description: "A hoodie is a sweatshirt with a hood.",
       price: 499,
     },
   },
@@ -71,8 +71,8 @@ const products = [
     image: img8,
     text: {
       heading: "Frock",
-      description: "Elegant leather loafer sandal for.",
-      price: 399,
+      description: "A frock is a woman's or girl's dress.",
+      price: 259,
     },
   },
 ];
@@ -88,7 +88,7 @@ const Featurepdct = () => {
           These are our Products
         </h2>
       </div>
-      <div className="grid grid-cols-4 grid-rows-2 py-5">
+      <div className="grid grid-cols-4 grid-rows-2 py-10 ">
         {products.map((item, i) => 
           <Featured key={i} desc={item.text.description} heading={item.text.heading} image={item.image} price={item.text.price}/>
         )}
