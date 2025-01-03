@@ -64,7 +64,7 @@ const Slide = () => {
      useEffect(() => {
           const interval = setInterval(() => {
                next()
-          }, 1500); 
+          }, 2000); 
 
          
           return () => clearInterval(interval);
