@@ -3,9 +3,9 @@ import { SVGProps } from "react"
 const Navsvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={20}
-    height={20}
-    fill="#000"
+    width={15}
+    height={15}
+    fill="#fff"
     viewBox="0 -2 28 28"
     {...props}
   >

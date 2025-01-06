@@ -51,7 +51,7 @@ const Category = () => {
         </div>
 
      
-        <div className="relative w-full h-[150px] md:h-[200px] lg:h-[250px] overflow-hidden">
+        <div className="relative w-full h-[150px] md:h-[200px] lg:h-[215px] overflow-hidden">
           <Image
             src="/images/Shoes.jpg"
             alt="Shoes"
@@ -66,7 +66,7 @@ const Category = () => {
         </div>
 
       
-        <div className="relative w-full h-[150px] md:h-[200px] lg:h-[250px] overflow-hidden">
+        <div className="relative w-full h-[150px] md:h-[200px] lg:h-[215px] overflow-hidden">
           <Image
             src="/images/Kids.jpg"
             alt="Kids"
