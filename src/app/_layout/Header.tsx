@@ -24,7 +24,7 @@ const Header = () => {
           ))}
          
           <h2 className='text-xs md:text-lg'>
-              <a className='' href="">Login</a>
+              <a className='' href="/login">Login</a>
             </h2>
           <div className='relative size-4 md:size-6 top-[0.125rem] px-3 flex items-center'>
             <Image src='/svg/cart.svg' alt="cart" fill />

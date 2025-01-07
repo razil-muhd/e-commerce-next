@@ -26,7 +26,7 @@ const Category = () => {
               fill
             />
             <div className="absolute end-4 bottom-4">
-              <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <button className="bg-gradient-to-r from-blue-500  text-white font-semibold px-5 py-3 rounded-lg  hover:to-blue-700 shadow-xl transition-all duration-300 hover:scale-110">
                 MEN
               </button>
             </div>
@@ -43,7 +43,7 @@ const Category = () => {
               fill
             />
             <div className="absolute end-4 bottom-4">
-              <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <button className="bg-gradient-to-r from-blue-500  text-white font-semibold px-5 py-3 rounded-lg hover: to-blue-700 shadow-xl transition-all duration-300 hover:scale-110">
                 WOMEN
               </button>
             </div>
@@ -59,7 +59,7 @@ const Category = () => {
             fill
           />
           <div className="absolute end-4 bottom-4">
-            <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+            <button className="bg-gradient-to-r from-blue-500  text-white font-semibold px-5 py-3 rounded-lg  hover: to-blue-700 shadow-xl transition-all duration-300 hover:scale-110">
               SHOES
             </button>
           </div>
@@ -74,7 +74,7 @@ const Category = () => {
             fill
           />
           <div className="absolute end-4 bottom-4">
-            <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold px-5 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+            <button className="bg-gradient-to-r from-blue-500  text-white font-semibold px-5 py-3 rounded-lg  hover:to-blue-700 shadow-xl transition-all duration-300 hover:scale-110">
               KIDS
             </button>
           </div>

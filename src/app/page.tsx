@@ -7,7 +7,7 @@ import Featurepdct from './_components/Featurepdct';
 
 const page = () => {
   return (
-    <div className='pt-[5.944rem]'>
+    <div className="md:pt-[4.944rem] sm:pt-[2.455rem] ">
       <Slide />
       <Category/>
       <Featurepdct/>
