@@ -33,11 +33,11 @@ const Footer = () => {
                         <div className="h-8 w-8 relative">
                             <Link href=".."><Image src="/svg/insta.svg" alt="Instagram" fill /></Link>
                         </div>
-                        <div className="h-8 w-8 relative">
+                        <div className="h-8 w-8 relative ">
                             <Link href=".."><Image src="/svg/fb.svg" alt="Facebook" fill /></Link>
                         </div>
                         <div className="h-8 w-8 relative">
-                            <Link href=".."><Image src="/svg/whatsapp.svg" alt="WhatsApp" fill /></Link>
+                            <Link href=".."><Image src="/svg/whatsapp.svg" alt="WhatsApp" fill  /></Link>
                         </div>
                     </div>
                 </div>

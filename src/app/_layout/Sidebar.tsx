@@ -26,7 +26,7 @@ const Sidebar = () => {
         <div onClick={()=>setOpen(!open)} className='bg-transparent w-[50%]'>
 
         </div>
-        <div className='bg-blue-400 w-[50%] pt-10'>
+        <div className='bg-blue-400 w-[50%] pt-10 underline'>
         {navLinks.map((helo, index) => (
             <Link  href={helo.path} key={index}>
               <div className='flex flex-col px-2 items-center pt-2'>{helo.name}</div>

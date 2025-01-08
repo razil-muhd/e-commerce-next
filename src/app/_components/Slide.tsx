@@ -70,7 +70,7 @@ const Slide = () => {
           return () => clearInterval(interval);
      }, [slide]);
      return (
-          <div className={cn('relative h-[10em] md:h-[14rem] lg:h-[20rem] xl:h-[30rem] w-full flex items-center',{'justify-center':slide==0})}>
+          <div className={cn('relative h-[4rem] md:h-[14rem] lg:h-[20rem] xl:h-[30rem] w-full flex items-center',{'justify-center':slide==0})}>
                <Image className='object-cover w-full h-full' src={gallery.at(slide)!.image} alt='slide' fill />
                <div className='text-black absolute text-4xl  flex justify-between w-full px-3  z-50'>
                     <button  onClick={prev}>{"<"}</button>
