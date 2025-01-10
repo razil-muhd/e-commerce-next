@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+
 const loginSchema = z.object({
   email: z.string().email("Email is required"),
   password: z.string().min(8, "Password is required atleast 8 character").max(10,"maximum 10 character") .regex(
@@ -22,14 +23,16 @@ const LoginForm = () => {
     handleSubmit,
     reset,
     
-    formState: { errors,isSubmitting },
+    formState: { errors,isSubmitting,isSubmitSuccessful },
   } = useForm<Tlogin>({
     resolver: zodResolver(loginSchema),
   });
   const [show, setShow] = useState(false);
   const onsubmit = async (data: Tlogin) => {
     console.log("submitted data:", data);
-    reset()
+      reset()
+      setShow(false)
+  
   };
   return (
     <div>
@@ -54,12 +57,12 @@ const LoginForm = () => {
           />
           {errors && <p className="text-red-600">{errors.password?.message}</p> }
           {show ? (
-            <Closeeye
+            <Openeye
               className="absolute top-3 right-2  cursor-pointer"
               onClick={() => setShow(!show)}
             />
           ) : (
-            <Openeye
+            <Closeeye
               className="absolute top-3 right-2  cursor-pointer"
               onClick={() => setShow(!show)}
             />
@@ -68,13 +71,13 @@ const LoginForm = () => {
 
         <button disabled={isSubmitting}
           type="submit"
-          className=" border border-solid bg-yellow-300 w-full rounded-lg p-1 md:p-2 "
+          className=" border border-solid bg-yellow-300 w-full rounded-lg p-1 md:p-2  text-white text-lg md:text-xl font-semibold"
         >
           Login
         </button>
         <h1 className="text-xs md:text-base">
           Don't have an account?
-          <Link className="text-violet-500 font-bold" href={""}>
+          <Link href="/signup" className="text-violet-500 font-bold underline" type="button" >
             Sign up
           </Link>
         </h1>

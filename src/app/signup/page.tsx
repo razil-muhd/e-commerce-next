@@ -1,15 +1,8 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Closeeye from "@/components/svg/Closeeye";
-import Openeye from "@/components/svg/Openeye";
-import LoginForm from "./_components/LoginForm";
-
+import Signup from "./_components/Signup";
 
 const page = () => {
-
- 
   return (
     <div className="md:pt-[4.944rem] sm:pt-[2.455rem] ">
       <div className="relative h-screen flex items-center justify-center w-full">
@@ -26,21 +19,13 @@ const page = () => {
           className="object-bottom md:hidden"
         />
         <div className="bg-white w-72   md:w-96 absolute border rounded-xl ">
-          <h1 className="text-center pt-10 text-xl md:text-2xl font-bold text-blue-400">"Log in to your account"
+          <h1 className="text-center pt-10 text-xl md:text-2xl font-bold text-blue-400">
+            Sign Up
           </h1>
           <h2 className="text-center pt-1 text-xs">
-            "Please enter your details!..."
-       
-            
+            Create your account!...
           </h2>
-
-          
-            <LoginForm/>
-         
-
-          
-         
-            
+          <Signup/>
         </div>
       </div>
     </div>

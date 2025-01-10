@@ -1,5 +1,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+
+
 type Props = {
   image: StaticImageData;
   heading: string;
@@ -15,7 +17,7 @@ const Featured = ({ image, heading, desc, price }: Props) => {
             src={image}
             alt="Image"
             fill
-            className="rounded-lg border border-blue-400 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="rounded-lg  shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
           />
         </div>
         <div className="text-center">
