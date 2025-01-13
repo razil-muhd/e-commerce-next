@@ -53,7 +53,7 @@ const Signup = () => {
           className="border border-solid rounded-lg p-2 md:p-3 w-full text-start "
           {...register("name")}
         />
-        {errors.name && errors.name.message}
+        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
         <input
           type="email"
           placeholder="Email "

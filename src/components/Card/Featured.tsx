@@ -2,6 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 
 
+
 type Props = {
   image: StaticImageData;
   heading: string;
