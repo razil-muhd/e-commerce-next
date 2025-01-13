@@ -1,21 +1,23 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 
 
 type Props = {
-  image: StaticImageData;
+  images: string;
   heading: string;
   desc: string;
   price: number;
+  id:string
 };
-const Featured = ({ image, heading, desc, price }: Props) => {
+const Featured = ({ images, heading, desc, price,id }: Props) => {
   return (
-    <div>
+    <Link href={`/shop/${id}`}>
       <div className=" px-12 ">
         <div className=" relative h-[25rem]  ">
           <Image
-            src={image}
+            src={images}
             alt="Image"
             fill
             className="rounded-lg  shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
@@ -27,7 +29,7 @@ const Featured = ({ image, heading, desc, price }: Props) => {
           <h1 className="text-2xl font-semibold pb-8">₹{price}</h1>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

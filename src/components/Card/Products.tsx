@@ -1,22 +1,24 @@
 import React from 'react'
 import Image, { StaticImageData } from "next/image";
+import Link from 'next/link';
 type Props={
-    image: StaticImageData;
+    image?: StaticImageData;
     text: string;
-
+    id?: string;
+    
 }
 
-const Products = ({image,text}:Props) => {
+const Products = ({image,text,id}:Props) => {
   return (
-   <div>
-        <div className=" px-12 py-9">
+   <Link href={`/shop/${text}`}>
+        <div className=" px-12 py-9 bg-slate-400">
           <div className=" relative h-[25rem]  flex  justify-center items-center  ">
-            <Image
+            {/* <Image
               src={image}
               alt="Image"
               fill
               className="rounded-lg  shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-            />
+            /> */}
              <div className='relative'>
               <h1 className='text-white text-2xl font-bold  px-4 py-2'>{text}</h1>
 
@@ -24,7 +26,7 @@ const Products = ({image,text}:Props) => {
           </div>
          
         </div>
-      </div>
+      </Link>
   )
 }
 

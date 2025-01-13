@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className='fixed z-[80] inset-x-0 flex '>
       <div className="bg-blue-400 w-full  flex justify-between items-center px-4 py-3 md:px-10 md:py-7 shadow-xl  border-b-2">
-        <h1 className=' text-white font-bold  text-xs md:text-lg  '>E-COMMERCE</h1>
+        <Link href={"/"} className=' text-white font-bold  text-xs md:text-lg   '>E-COMMERCE</Link>
         <div className='flex gap-5 md:gap-8  text-white  text-lg font-bold   items-center '>
          
           {navLinks.map((helo, index) => (
