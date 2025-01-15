@@ -74,7 +74,7 @@ const page = async() => {
       </div>
     
         <div className="grid gap-3 grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {categorydynamic.map((item:string, i) => (
+          {categorydynamic.map((item:string, i:any) => (
             <Products
               key={i}
               // image={item.image}

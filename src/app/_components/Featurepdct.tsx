@@ -77,7 +77,8 @@ const products = [
   },
 ];
 
-const Featurepdct = () => {
+const Featurepdct =  () => {
+
   return (
     <div>
       <div>
@@ -89,8 +90,8 @@ const Featurepdct = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"  >
-        {products.map((item, i) => 
-          <Featured key={i} desc={item.text.description} heading={item.text.heading} image={item.image} price={item.text.price}/>
+        {products.map((item:any, i:any) => 
+          <Featured  id="" images={item.image} key={i} desc={item.text.description} heading={item.text.heading}   price={item.text.price}/>
         )}
       </div>
     </div>

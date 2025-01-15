@@ -94,7 +94,7 @@ const page = async ({
     <div className="pt-[4.944rem]">
       <div>
         <h1 className="text-center font-semibold text-3xl font-sans pt-5">
-          Men Products
+         Products
         </h1>
       </div>
       <div className="grid grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -106,6 +106,7 @@ const page = async ({
             desc={items.description}
             price={items.price}
             id={items.id}
+            par={par}
           />
         ))}
       </div>
