@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Sidebar from './Sidebar';
 import Link from 'next/link';
+import Cart from '../_components/Cart';
 
 
 const Header = () => {
@@ -26,14 +27,7 @@ const Header = () => {
           <h2 className='text-xs md:text-lg'>
               <a className='' href="/login">Login</a>
             </h2>
-          <div className='relative size-4 md:size-6 top-[0.125rem] px-3 flex items-center'>
-            <Image src='/svg/cart.svg' alt="cart" fill />
-            <div className='absolute rounded-full size-3 top-[-5px] right-[-5] md:size-4 bg-white flex justify-center items-center md:top-[-5px] md:right-[-8]'>
-              <p className='text-blue-400 text-[0.75rem] font-semibold'>0</p>
-
-            </div>
-            
-          </div>
+        <Cart/>   
           <Sidebar/>
        
 

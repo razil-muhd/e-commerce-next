@@ -26,7 +26,7 @@ const page = () => {
           className="object-bottom md:hidden"
         />
         <div className="bg-white w-72   md:w-96 absolute border rounded-xl ">
-          <h1 className="text-center pt-10 text-xl md:text-2xl font-bold text-blue-400">"Log in to your account"
+          <h1 className="text-center pt-10 text-xl md:text-2xl font-bold text-blue-400">Log in to your account
           </h1>
           <h2 className="text-center pt-1 text-xs">
             "Please enter your details!..."

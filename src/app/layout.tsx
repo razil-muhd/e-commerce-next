@@ -3,15 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./_layout/Header";
 import Footer from "./_layout/Footer";
-
-
+import ProviderCart from "./provider/ProviderCart";
 
 const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "E-Commerce",
@@ -25,14 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${inter.variable} antialiased`}
-      >
-        <Header />
-
-        {children}
-        <Footer />
+      <body className={`${inter.variable} ${inter.variable} antialiased`}>
+        <ProviderCart>
+          <Header />
+          {children}
+          <Footer />
+        </ProviderCart>
       </body>
     </html>
+
   );
 }
