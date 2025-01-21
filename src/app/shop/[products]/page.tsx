@@ -96,6 +96,9 @@ const page = async ({
         <h1 className="text-center font-semibold text-3xl font-sans pt-5">
          Products
         </h1>
+       <div className="flex justify-end px-4"> <h1 className=" bg-blue-400 text-white p-1">Filter</h1></div>
+       <div className="flex justify-end px-4 pt-1"> <h1 className=" bg-blue-400 text-white p-1">Sorter by name</h1>
+       </div>
       </div>
       <div className="grid grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tesdynamic.products.map((items: any, i: number) => (

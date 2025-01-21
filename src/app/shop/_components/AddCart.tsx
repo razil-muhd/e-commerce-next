@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Products from "@/components/Card/Products";
 import { useCart } from "@mrvautin/react-shoppingcart";
 import React from "react";
@@ -11,12 +11,18 @@ type Props = {
   };
 };
 
-const AddCart = ({singleproduct}: Props) => {
-  const { addItem,  items } = useCart();
-  console.log("items:",items)
+const AddCart = ({ singleproduct }: Props) => {
+  const { addItem, items, addShipping } = useCart();
+  console.log("items:", items);
   return (
     <div>
-      <button onClick={()=> addItem(singleproduct)} className="border border-solid bg-sky-600 text-white  w-20 rounded-lg p-1">
+      <button
+        onClick={() => {
+          addItem(singleproduct);
+          addShipping({ description: "", cost: 20 });
+        }}
+        className="border border-solid bg-sky-600 text-white  w-20 rounded-lg p-1"
+      >
         Buy Now
       </button>
     </div>
