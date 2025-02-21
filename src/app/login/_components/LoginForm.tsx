@@ -6,6 +6,10 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { FrontendHome } from "@/api/Api";
+import Cookies from "js-cookie";
 
 
 const loginSchema = z.object({
@@ -23,17 +27,44 @@ const LoginForm = () => {
     handleSubmit,
     reset,
     
-    formState: { errors,isSubmitting,isSubmitSuccessful },
+    formState: { errors,isSubmitting, },
   } = useForm<Tlogin>({
     resolver: zodResolver(loginSchema),
   });
   const [show, setShow] = useState(false);
+  const router = useRouter();
   const onsubmit = async (data: Tlogin) => {
-    console.log("submitted data:", data);
-      reset()
-      setShow(false)
+    try{
+      const login = await FrontendHome.LoginApi(data)
+    
+    
+        if(login.data.success){
+          window.localStorage.setItem("accesstoken", login.data.accessToken)
+          window.localStorage.setItem("userData",JSON.stringify (login.data.userData))
+          Cookies.set("accessToken",login.data.accessToken)
+          toast.success('login succesfull');
+          const checkout = localStorage.getItem("checkout")
+          if(checkout){
+            localStorage.removeItem("checkout")
+            router.push("/checkout")
+          }else{
+            router.push("/")
+          }
+
+          router.refresh();
+        }
+     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     }catch(errors:any){
+      console.log("object",errors)
+   
+      toast.error(errors.response.data);
   
+  
+    }
+    reset()
+    setShow(false)
   };
+
   return (
     <div>
       <form
@@ -76,7 +107,7 @@ const LoginForm = () => {
           Login
         </button>
         <h1 className="text-xs md:text-base">
-          Don't have an account?
+          Don&apos;t have an account?
           <Link href="/signup" className="text-violet-500 font-bold underline" type="button" >
             Sign up
           </Link>

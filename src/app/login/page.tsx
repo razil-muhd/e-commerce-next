@@ -1,9 +1,8 @@
 "use client";
-import React, { useState } from "react";
+
 import Image from "next/image";
-import Link from "next/link";
-import Closeeye from "@/components/svg/Closeeye";
-import Openeye from "@/components/svg/Openeye";
+
+
 import LoginForm from "./_components/LoginForm";
 
 
@@ -29,7 +28,7 @@ const page = () => {
           <h1 className="text-center pt-10 text-xl md:text-2xl font-bold text-blue-400">Log in to your account
           </h1>
           <h2 className="text-center pt-1 text-xs">
-            "Please enter your details!..."
+            &quot;Please enter your details!...&quot;
        
             
           </h2>

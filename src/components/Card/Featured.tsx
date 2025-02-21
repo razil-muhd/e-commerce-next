@@ -1,18 +1,18 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 type Props = {
   images: string;
   heading: string;
   desc: string;
-  price: number;
+  price: string;
   id:string
 
-  par:string
+  par?:string
 };
-const Featured = ({ images, heading, desc, price,id,par }: Props) => {
+const Featured = ({ images, heading, desc, price,id}: Props) => {
   return (
-    <Link href={`/shop/${par}/${id}`}>
+    <Link href={`/shop/products/${id}`}>
       <div className=" px-12 ">
         <div className=" relative h-[25rem]  ">
           <Image

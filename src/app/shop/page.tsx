@@ -1,72 +1,20 @@
 import React from "react";
-import Image from "next/image";
-import img1 from "@public/images/27277.jpg";
+
 import Products from "../../components/Card/Products";
-import Link from "next/link";
 
-const Images = [
-  {
-    id: "0",
-    image: img1,
-    heading: "Men",
-  },
-  {
-    id: "1",
-    image: img1,
-    heading: "Women",
-  },
-  {
-    id: "2",
-    image: img1,
-    heading: "Kids",
-  },
-  {
-    id: "3",
-    image: img1,
-    heading: "Shoes",
-  },
-  {
-    id: "4",
-    image: img1,
+import { FrontendHome } from "@/api/Api";
+import { storageUrl } from "../utils/baseurl";
 
-    heading: "Shirts",
-  },
-  {
-    id: "5",
-    image: img1,
+const Categorypageapi = async () => {
+  const response = await FrontendHome.Categorypageapi();
 
-    heading: "Shirts",
-  },
-  {
-    id: "6",
-    image: img1,
-
-    heading: "Shirts",
-  },
-  {
-    id: "7",
-    image: img1,
-
-    heading: "Shirts",
-  },
-  {
-    id: "8",
-    image: img1,
-
-    heading: "Shirts",
-  },
-  {
-    id: "9",
-    image: img1,
-
-    heading: "Shirts",
-  },
-];
+  return response.data;
+};
 
 const page = async() => {
-  const res = await fetch('https://dummyjson.com/products/category-list')
-  const categorydynamic =await res.json();
-  console.log("categorydynamic:",categorydynamic)
+  const res = await Categorypageapi();
+  const categorydynamic = res.data
+  
   return (
     <div className="pt-[4.944rem] ">
       <div className="text-center text-3xl md:pt-5  font-semibold">
@@ -74,12 +22,12 @@ const page = async() => {
       </div>
     
         <div className="grid gap-3 grid-cols-1 py-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {categorydynamic.map((item:string, i:any) => (
+          {categorydynamic.map((item:{image:string,category:string,_id:string}, i:number) => (
             <Products
               key={i}
-              // image={item.image}
-              text={item}
-              // id={item.id}
+              image={storageUrl+ item.image}
+              text={item.category}
+              id={item._id}
             />
           ))}
         </div>

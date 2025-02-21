@@ -2,20 +2,31 @@
 import useClients from "@/hook/useClients";
 import { useCart } from "@mrvautin/react-shoppingcart";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 
-const page = () => {
+import { storageUrl } from "../utils/baseurl";
+import { useRouter } from "next/navigation";
+
+const Page = () => {
   const { items, updateItemQuantity, removeItem, totalItemsAmount } = useCart();
+  const router = useRouter();
   const client = useClients();
   if (!client) {
     return null;
   }
-  console.log("items:", items);
+  const handleCheckout = () => {
+    const accessToken = localStorage.getItem("accesstoken");
+
+    if (accessToken) {
+      
+      router.push("/checkout");
+    } else {
+      localStorage.setItem("checkout","true")
+      router.push("/login");
+    }
+  };
 
   return (
     <div className="pt-[7.944rem] pb-4 px-4 md:px-[2rem] grid grid-cols-1 md:grid-cols-6  gap-4 h-screen">
-   
       <div className="col-span-1 md:col-span-4 overflow-x-auto">
         <table className="min-w-full table-auto border-collapse border border-gray-200">
           <thead>
@@ -33,7 +44,7 @@ const page = () => {
               <tr className="text-center text-sm md:text-base" key={i}>
                 <td className="relative h-28 w-28">
                   <Image
-                    src={item.images.at(0)}
+                    src={storageUrl + item.images}
                     alt=""
                     fill
                     className="pt-3 object-cover px-3"
@@ -49,9 +60,7 @@ const page = () => {
                     >
                       +
                     </button>
-                    <h1 className="  px-1 py-1">
-                      {item.quantity}
-                    </h1>
+                    <h1 className="  px-1 py-1">{item.quantity}</h1>
                     <button
                       onClick={() => updateItemQuantity(item, "decrease", 1)}
                       className="px-2 py-1  rounded-md"
@@ -75,7 +84,6 @@ const page = () => {
         </table>
       </div>
 
-   
       <div className="bg-slate-300 rounded-xl p-4 md:col-span-2 h-fit">
         <div className="font-bold text-center text-xl md:text-2xl pb-4">
           Cart Total
@@ -85,16 +93,16 @@ const page = () => {
           <div>{Math.round(totalItemsAmount)}</div>
         </div>
         <div className="text-center">
-          <Link
-            href="/checkout"
+          <button
+            onClick={handleCheckout}
             className="inline-block border-2 border-stone-700 py-3 px-7 rounded-xl hover:bg-stone-700 hover:text-white transition"
           >
             Check Out
-          </Link>
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

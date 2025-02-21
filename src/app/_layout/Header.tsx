@@ -1,48 +1,66 @@
-import Image from 'next/image'
-import React from 'react'
-import Sidebar from './Sidebar';
-import Link from 'next/link';
-import Cart from '../_components/Cart';
-
+"use client";
+import React, { useEffect, useState } from "react";
+import Sidebar from "./Sidebar";
+import Link from "next/link";
+import Cart from "../_components/Cart";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Shop', path: '/shop' },
-    { name: 'Contact', path: '/contact' },
-  
+    { name: "Home", path: "/" },
+    { name: "Shop", path: "/shop" },
+    { name: "Contact", path: "/contact" },
   ];
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    setAccessToken(window.localStorage.getItem("accesstoken"));
+  }, [pathname]); 
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("accesstoken");
+    window.localStorage.removeItem("userData");
+    setAccessToken(null);
+    router.push("/");
+    setTimeout(() => {
+      router.refresh();
+    }, 100); 
+  };
+
   return (
-    <div className='fixed z-[80] inset-x-0 flex '>
-      <div className="bg-blue-400 w-full  flex justify-between items-center px-4 py-3 md:px-10 md:py-7 shadow-xl  border-b-2">
-        <Link href={"/"} className=' text-white font-bold  text-xs md:text-lg   '>E-COMMERCE</Link>
-        <div className='flex gap-5 md:gap-8  text-white  text-lg font-bold   items-center '>
-         
+    <nav className="fixed z-[80] inset-x-0 flex">
+      <div className="bg-blue-400 w-full flex justify-between items-center px-4 py-3 md:px-10 md:py-7 shadow-xl border-b-2">
+        <Link href={"/"} className="text-white font-bold text-xs md:text-lg">
+          E-COMMERCE
+        </Link>
+        <div className="flex gap-5 md:gap-8 text-white text-lg font-bold items-center">
           {navLinks.map((helo, index) => (
-            <Link  href={helo.path} key={index}>
-              <div className='hidden md:block'>{helo.name}</div>
+            <Link href={helo.path} key={index}>
+              <div className="hidden md:block">{helo.name}</div>
             </Link>
           ))}
-         
-          <h2 className='text-xs md:text-lg'>
-              <a className='' href="/login">Login</a>
-            </h2>
-        <Cart/>   
-          <Sidebar/>
-       
 
-        </div >
-    
-  
-        
-        
-        
-         
-
+          {accessToken ? (
+            <button
+              onClick={handleLogout}
+              className="text-xs md:text-lg cursor-pointer"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link href="/login" className="text-xs md:text-lg">
+              Login
+            </Link>
+          )}
+          <Cart />
+          <Sidebar />
+        </div>
       </div>
-    </div>
+    </nav>
+  );
+};
 
-  )
-}
-
-export default Header
+export default Header;

@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useCart } from "@mrvautin/react-shoppingcart";
 const formschema = z.object({
   name: z
     .string()
@@ -22,15 +23,19 @@ const formschema = z.object({
 type Tcheck = z.infer<typeof formschema>;
 
 const Checkoutform = () => {
+    const {items}=useCart();
+    console.log("items:",items)
+
     const {
         register,
         handleSubmit,
         reset,
     
-        formState: { errors, isSubmitting, isSubmitSuccessful },
+        formState: { errors,},
       } = useForm<Tcheck>({
         resolver: zodResolver(formschema),
       });
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const onsubmit = async (data: Tcheck) => {
         reset();
       };

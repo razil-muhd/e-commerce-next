@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./_layout/Header";
 import Footer from "./_layout/Footer";
 import ProviderCart from "./provider/ProviderCart";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${inter.variable} antialiased`}>
+      <Toaster position="top-right" containerClassName="mt-4"/>
         <ProviderCart>
           <Header />
           {children}

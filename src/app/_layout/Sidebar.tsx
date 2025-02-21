@@ -1,6 +1,6 @@
 'use client'
-import React, { use, useState } from 'react'
-import Image from "next/image";
+import React, {  useState } from 'react'
+
 import Navsvg from '@/components/svg/Navsvg';
 import Link from 'next/link';
 
