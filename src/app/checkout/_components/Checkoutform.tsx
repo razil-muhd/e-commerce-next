@@ -4,6 +4,9 @@ import { z } from "zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "@mrvautin/react-shoppingcart";
+import { FrontendHome } from "@/api/Api";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 const formschema = z.object({
   name: z
     .string()
@@ -23,128 +26,149 @@ const formschema = z.object({
 type Tcheck = z.infer<typeof formschema>;
 
 const Checkoutform = () => {
-    const {items}=useCart();
-    console.log("items:",items)
+  const router = useRouter();
+  const { items } = useCart();
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-    
-        formState: { errors,},
-      } = useForm<Tcheck>({
-        resolver: zodResolver(formschema),
-      });
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const onsubmit = async (data: Tcheck) => {
-        reset();
-      };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<Tcheck>({
+    resolver: zodResolver(formschema),
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onsubmit = async (data: Tcheck) => {
+    try {
+const billingdetails = data;
+
+const body = {billingdetails, items}
+
+console.log(body);
+
+      const response = await FrontendHome.OrderApi(body)
+   
+      console.log("response:",response)
+      if (response.data.success) {
+        toast.success("Order succesfull");
+        router.push("/");
+        router.refresh();
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (errors:any) {
+      console.log("object", errors);
+
+      toast.error(errors.response.data);
+    }
+    reset();
+
+  };
   return (
     <div>
-         <form
-            className="px-32 py-8  rounded-lg shadow-lg"
-            onSubmit={handleSubmit(onsubmit)}
-          >
-            <div className="mb-6">
-              <div className="flex gap-6">
-                <div className="flex flex-col w-1/2">
-                  <label className="text-lg font-medium mb-2">First Name</label>
-                  <input
-                    type="text"
-                    placeholder="Enter First Name"
-                    className="border border-gray-300 rounded-md px-4 py-2 focus:outline-blue-400 hover:border-blue-400 transition"
-                    {...register("name")}
-                  />
-                  {errors.name && (
-                    <p className="text-red-500 mt-1">{errors.name.message}</p>
-                  )}
-                </div>
-                <div className="flex flex-col w-1/2">
-                  <label className="text-lg font-medium mb-2">Last Name</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Last Name"
-                    className="border border-gray-300 rounded-md px-4 py-2 focus:outline-blue-400 hover:border-blue-400 transition"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-6">
-              <label className="text-lg font-medium mb-2 block">Phone</label>
+      <form
+        className="px-32 py-8  rounded-lg shadow-lg"
+        onSubmit={handleSubmit(onsubmit)}
+      >
+        <div className="mb-6">
+          <div className="flex gap-6">
+            <div className="flex flex-col w-1/2">
+              <label className="text-lg font-medium mb-2">First Name</label>
               <input
                 type="text"
-                placeholder="Enter phone number"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
-                {...register("phone")}
+                placeholder="Enter First Name"
+                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-blue-400 hover:border-blue-400 transition"
+                {...register("name")}
               />
-              {errors.phone && (
-                <p className="text-red-500 mt-1">{errors.phone.message}</p>
+              {errors.name && (
+                <p className="text-red-500 mt-1">{errors.name.message}</p>
               )}
             </div>
-
-            <div className="mb-6">
-              <label className="text-lg font-medium mb-2 block">Email</label>
-              <input
-                type="email"
-                placeholder="Enter email address"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
-                {...register("email")}
-              />
-              {errors.email && (
-                <p className="text-red-500 mt-1">{errors.email.message}</p>
-              )}
-            </div>
-
-            <div className="mb-6">
-              <label className="text-lg font-medium mb-2 block">Address</label>
-              <textarea
-                placeholder="Enter address"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
-                {...register("address")}
-              ></textarea>
-              {errors.address && (
-                <p className="text-red-500 mt-1">{errors.address.message}</p>
-              )}
-            </div>
-
-            <div className="mb-6">
-              <label className="text-lg font-medium mb-2 block">Pincode</label>
+            <div className="flex flex-col w-1/2">
+              <label className="text-lg font-medium mb-2">Last Name</label>
               <input
                 type="text"
-                placeholder="Enter your pin code"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
-                {...register("pincode")}
+                placeholder="Enter Last Name"
+                className="border border-gray-300 rounded-md px-4 py-2 focus:outline-blue-400 hover:border-blue-400 transition"
               />
-              {errors.pincode && (
-                <p className="text-red-500 mt-1">{errors.pincode.message}</p>
-              )}
             </div>
+          </div>
+        </div>
 
-            <div className="mb-6">
-              <label className="text-lg font-medium mb-2 block">
-                Country/Region
-              </label>
-              <select className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition">
-                <option>India</option>
-                <option>Pakistan</option>
-                <option>UAE</option>
-                <option>Sri Lanka</option>
-                <option>Bangladesh</option>
-                <option>USA</option>
-                <option>Egypt</option>
-              </select>
-            </div>
+        <div className="mb-6">
+          <label className="text-lg font-medium mb-2 block">Phone</label>
+          <input
+            type="text"
+            placeholder="Enter phone number"
+            className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
+            {...register("phone")}
+          />
+          {errors.phone && (
+            <p className="text-red-500 mt-1">{errors.phone.message}</p>
+          )}
+        </div>
 
-            <div>
-              <button className="w-full bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 hover:shadow-lg transition">
-                Complete Order
-              </button>
-            </div>
-          </form>
-      
+        <div className="mb-6">
+          <label className="text-lg font-medium mb-2 block">Email</label>
+          <input
+            type="email"
+            placeholder="Enter email address"
+            className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
+            {...register("email")}
+          />
+          {errors.email && (
+            <p className="text-red-500 mt-1">{errors.email.message}</p>
+          )}
+        </div>
+
+        <div className="mb-6">
+          <label className="text-lg font-medium mb-2 block">Address</label>
+          <textarea
+            placeholder="Enter address"
+            className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
+            {...register("address")}
+          ></textarea>
+          {errors.address && (
+            <p className="text-red-500 mt-1">{errors.address.message}</p>
+          )}
+        </div>
+
+        <div className="mb-6">
+          <label className="text-lg font-medium mb-2 block">Pincode</label>
+          <input
+            type="text"
+            placeholder="Enter your pin code"
+            className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition"
+            {...register("pincode")}
+          />
+          {errors.pincode && (
+            <p className="text-red-500 mt-1">{errors.pincode.message}</p>
+          )}
+        </div>
+
+        <div className="mb-6">
+          <label className="text-lg font-medium mb-2 block">
+            Country/Region
+          </label>
+          <select className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-blue-400 hover:border-blue-400 transition">
+            <option>India</option>
+            <option>Pakistan</option>
+            <option>UAE</option>
+            <option>Sri Lanka</option>
+            <option>Bangladesh</option>
+            <option>USA</option>
+            <option>Egypt</option>
+          </select>
+        </div>
+
+        <div>
+          <button className="w-full bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 hover:shadow-lg transition">
+            Complete Order
+          </button>
+        </div>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Checkoutform
+export default Checkoutform;

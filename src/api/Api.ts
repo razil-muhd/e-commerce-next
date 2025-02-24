@@ -34,7 +34,18 @@ LoginApi:async function (data:Tlogin){
     },
   });
 
+},
+OrderApi: async function (data:unknown){
+  const accessToken = window.localStorage.getItem("accesstoken");
+  return await axiosClient.post("order/",data,{
+    headers:{
+      "Authorization": `Bearer ${accessToken}`
+    },
+  })
+
 }
+  
+
   
 };
   
