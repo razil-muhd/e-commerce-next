@@ -38,31 +38,29 @@ const Checkoutform = () => {
     resolver: zodResolver(formschema),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onsubmit = async (data: Tcheck) => {
     try {
-const billingdetails = data;
+      const billingdetails = data;
 
-const body = {billingdetails, items}
+      const body = { billingdetails, items };
 
-console.log(body);
+      console.log(body);
 
-      const response = await FrontendHome.OrderApi(body)
-   
-      console.log("response:",response)
-      if (response.data.success) {
+      const response = await FrontendHome.OrderApi(body);
+
+      console.log("response:", response);
+      if (response.success) {
         toast.success("Order succesfull");
-        router.push("/");
+        router.push(`/payment?orderId=${response.data.orderId}`);
         router.refresh();
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (errors:any) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (errors: any) {
       console.log("object", errors);
 
       toast.error(errors.response.data);
     }
     reset();
-
   };
   return (
     <div>
