@@ -11,7 +11,7 @@ type Props={
 const Products = ({image,text,id}:Props) => {
   return (
    <Link href={`/shop/${id}`}>
-        <div className=" px-12 py-9 bg-slate-400">
+        <div className=" px-12 py-9 ">
           <div className=" relative h-[25rem]  flex  justify-center items-center  ">
             <Image
               src={image}

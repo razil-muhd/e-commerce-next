@@ -19,7 +19,7 @@ const Page = () => {
       try {
         const response = await FrontendHome.PaymentApi(id!);
 
-        console.log("responseeee:", response);
+        console.log("responseeee:::::::::::::1232", response);
         setClientsecretkey(response.data.data.sessionId);
       } catch (error) {
         console.log("error:::", error);

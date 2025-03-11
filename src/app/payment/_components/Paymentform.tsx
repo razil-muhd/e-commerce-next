@@ -1,4 +1,5 @@
 "use client";
+import Loadersvg from "@/components/svg/Loadersvg";
 import {
   PaymentElement,
   useElements,
@@ -16,7 +17,7 @@ const Paymentform = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -34,7 +35,7 @@ const Paymentform = () => {
         return_url: "http://localhost:3000/payment/paymentinner",
       },
     });
-    console.log("errorr::", error);
+    console.log("errorr::", error); 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -45,11 +46,27 @@ const Paymentform = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="px-96 p-4 h-screen border border-black shadow-2xl flex flex-col justify-center w-full rounded-lg">
-      <PaymentElement id="payment-element"  className="border border-white shadow-lg p-5"/>
-      <button disabled={isLoading || !stripe || !elements} id="submit" className="bg-blue-500 border-blue-500 shadow-2xl rounded-lg text-white p-3">
+    <form
+      onSubmit={handleSubmit}
+      className="px-96 p-4 h-screen border border-black shadow-2xl flex flex-col justify-center w-full rounded-lg"
+    >
+      <PaymentElement
+        id="payment-element"
+        className="border border-white shadow-lg p-5"
+      />
+      <button
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+        className="bg-blue-500 border-blue-500 shadow-2xl rounded-lg text-white p-3"
+      >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner">processing payment.....</div> : "Pay now"}
+          {isLoading ? (
+            <div className="flex items-center justify-center" id="spinner">
+              <Loadersvg style={{ width: "50px", height: "25px" }} />
+            </div>
+          ) : (
+            "Pay now"
+          )}
         </span>
       </button>
     </form>

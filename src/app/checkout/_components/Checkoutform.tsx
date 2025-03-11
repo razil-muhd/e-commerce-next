@@ -50,7 +50,7 @@ const Checkoutform = () => {
 
       console.log("response:", response);
       if (response.success) {
-        toast.success("Order succesfull");
+        // toast.success("Order succesfull");
         router.push(`/payment?orderId=${response.data.orderId}`);
         router.refresh();
       }
