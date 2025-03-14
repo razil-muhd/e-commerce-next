@@ -26,7 +26,7 @@ const AddCart = ({ singleproduct }: Props) => {
     price:singleproduct.price
   }
   console.log("items::",items)
-  console.log("products::",products)
+  // console.log("products::",products)
   return (
     <div>
       <button

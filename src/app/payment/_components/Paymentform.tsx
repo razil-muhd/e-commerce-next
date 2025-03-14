@@ -35,7 +35,7 @@ const Paymentform = () => {
         return_url: "http://localhost:3000/payment/paymentinner",
       },
     });
-    console.log("errorr::", error); 
+    console.log("stripe errorr::", error); 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will

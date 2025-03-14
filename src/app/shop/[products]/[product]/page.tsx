@@ -17,7 +17,7 @@ const page = async ({ params }: { params: Promise<{ product: string }> }) => {
   const res = await Singleproduct(_id);
   const product =res.data;
 
-  console.log("product::::",product)
+  // console.log("product::::",product)
 
   return (
     <div className="lg:py-[10.944rem] lg:px-20 md:px-10 md:py-[5.944rem]">

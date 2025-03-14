@@ -6,9 +6,9 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FrontendHome } from "@/api/Api";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { FrontendHome } from "@/api/Api";
 
 const Sign = z
   .object({

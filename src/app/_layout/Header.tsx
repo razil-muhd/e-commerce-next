@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import Link from "next/link";
 import Cart from "../_components/Cart";
 import { usePathname, useRouter } from "next/navigation";
+import { getSession, signOut } from "next-auth/react";
 
 const Header = () => {
   const navLinks = [
@@ -17,19 +18,24 @@ const Header = () => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
 
   useEffect(() => {
-    setAccessToken(window.localStorage.getItem("accesstoken"));
+     const token = async () => {
+      const session = await getSession();
+      if(session?.accessToken){
+        setAccessToken(session?.accessToken);
+      }
+     };
+     token()
   }, [pathname]); 
 
-  const handleLogout = () => {
-    window.localStorage.removeItem("accesstoken");
-    window.localStorage.removeItem("userData");
+  const handleLogout = async () => {
+    await signOut({ redirect: false }); 
+ 
     setAccessToken(null);
     router.push("/");
     setTimeout(() => {
       router.refresh();
-    }, 100); 
+    }, 100);
   };
-
   return (
     <nav className="fixed z-[80] inset-x-0 flex">
       <div className="bg-blue-400 w-full flex justify-between items-center px-4 py-3 md:px-10 md:py-7 shadow-xl border-b-2">
