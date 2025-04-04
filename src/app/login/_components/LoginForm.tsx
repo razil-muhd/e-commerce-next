@@ -87,6 +87,7 @@ const LoginForm = () => {
       
       
       
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (errors: any) {
       console.log("object::::::", errors);
       // toast.error(errors.response.data)

@@ -18,7 +18,7 @@ type props = {
 };
 
 const Featurepdct = async ({ products }: props) => {
-  console.log("::", products);
+  // console.log("::", products);
 
   return (
     <div>

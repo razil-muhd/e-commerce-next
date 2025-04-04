@@ -49,18 +49,22 @@ const Checkoutform = () => {
       const response = await FrontendHome.OrderApi(body);
 
       console.log("response:", response);
-      if (response.success) {
-        // toast.success("Order succesfull");
-        router.push(`/payment?orderId=${response.data.orderId}`);
+      if (response.data.success) {
+        toast.success("Order succesfull");
+        router.push(`/payment?orderId=${response.data.data.orderId}`);
         router.refresh();
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (errors: any) {
       console.log("object", errors);
-
-      toast.error(errors.response.data);
+    
+      const errorMessage =
+        errors.response?.data?.message;
+      
+      toast.error(errorMessage);
     }
     reset();
+    
   };
   return (
     <div>

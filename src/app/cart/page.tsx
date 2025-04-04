@@ -14,7 +14,7 @@ const Page = () => {
     return null;
   }
   const handleCheckout = () => {
-    const accessToken = localStorage.getItem("accesstoken");
+    const accessToken = sessionStorage.getItem("next-auth.session-token");
 
     if (accessToken) {
       
